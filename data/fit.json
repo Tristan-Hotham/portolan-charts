@@ -1,0 +1,271 @@
+{
+ "fits": {
+  "catalan": {
+   "n": 100,
+   "centre": [
+    39.45,
+    10.29
+   ],
+   "proj": {
+    "mercator_sim": {
+     "median_km": 119,
+     "mean_km": 143,
+     "p90_km": 302,
+     "rms_km": 171,
+     "n": 100,
+     "rot_deg": 11.2
+    },
+    "mercator_aff": {
+     "median_km": 96,
+     "mean_km": 118,
+     "p90_km": 241,
+     "rms_km": 139,
+     "n": 100
+    },
+    "equirect_sim": {
+     "median_km": 99,
+     "mean_km": 122,
+     "p90_km": 266,
+     "rms_km": 147,
+     "n": 100,
+     "rot_deg": 10.7
+    },
+    "equirect_aff": {
+     "median_km": 91,
+     "mean_km": 105,
+     "p90_km": 201,
+     "rms_km": 125,
+     "n": 100
+    },
+    "local_sim": {
+     "median_km": 134,
+     "mean_km": 162,
+     "p90_km": 302,
+     "rms_km": 184,
+     "n": 100,
+     "rot_deg": 9.8
+    },
+    "local_aff": {
+     "median_km": 137,
+     "mean_km": 151,
+     "p90_km": 279,
+     "rms_km": 172,
+     "n": 100
+    }
+   },
+   "rot_deg": 11.2,
+   "a": [
+    216.5108066918139,
+    42.919248177531244
+   ],
+   "t": [
+    5644.87178975243,
+    -11900.046944431297
+   ],
+   "offsets": {
+    "7": [
+     102,
+     -0.0
+    ],
+    "8": [
+     102,
+     -0.0
+    ]
+   },
+   "km_per_px_38": 0.504,
+   "basins": {
+    "Western Mediterranean": {
+     "n": 38,
+     "global_median_km": 121,
+     "own_median_km": 57,
+     "rot_deg": 5.4,
+     "rel_scale": 1.03
+    },
+    "Eastern Mediterranean": {
+     "n": 29,
+     "global_median_km": 83,
+     "own_median_km": 56,
+     "rot_deg": 12.6,
+     "rel_scale": 1.043
+    },
+    "Black Sea": {
+     "n": 6,
+     "global_median_km": 111
+    },
+    "Atlantic coasts": {
+     "n": 27,
+     "global_median_km": 244,
+     "own_median_km": 73,
+     "rot_deg": 4.1,
+     "rel_scale": 0.764
+    }
+   },
+   "local": {
+    "median_km": 55,
+    "p90_km": 128
+   },
+   "local_by_basin": {
+    "Western Mediterranean": 43,
+    "Eastern Mediterranean": 61,
+    "Black Sea": 42,
+    "Atlantic coasts": 62
+   },
+   "bearing": {
+    "pairs": 4914,
+    "median_signed_deg": -10.2,
+    "median_abs_deg": 10.2,
+    "median_abs_corrected_deg": 3.6,
+    "within5_corrected_pct": 62.4,
+    "neg_pct": 96.1
+   },
+   "free_offsets": {
+    "median_km": 108,
+    "rot_deg": 8.7,
+    "offsets": {
+     "5": [
+      -128.7,
+      -0.6
+     ],
+     "7": [
+      905.5,
+      -173.2
+     ],
+     "8": [
+      1335.3,
+      -373.9
+     ]
+    }
+   },
+   "rose_gap_px": 102
+  },
+  "pisana": {
+   "n": 148,
+   "centre": [
+    39.51,
+    13.14
+   ],
+   "proj": {
+    "mercator_sim": {
+     "median_km": 93,
+     "mean_km": 112,
+     "p90_km": 191,
+     "rms_km": 139,
+     "n": 148,
+     "rot_deg": 10.4
+    },
+    "mercator_aff": {
+     "median_km": 92,
+     "mean_km": 101,
+     "p90_km": 174,
+     "rms_km": 124,
+     "n": 148
+    },
+    "equirect_sim": {
+     "median_km": 86,
+     "mean_km": 105,
+     "p90_km": 179,
+     "rms_km": 130,
+     "n": 148,
+     "rot_deg": 10.2
+    },
+    "equirect_aff": {
+     "median_km": 81,
+     "mean_km": 95,
+     "p90_km": 163,
+     "rms_km": 117,
+     "n": 148
+    },
+    "local_sim": {
+     "median_km": 96,
+     "mean_km": 116,
+     "p90_km": 208,
+     "rms_km": 139,
+     "n": 148,
+     "rot_deg": 8.8
+    },
+    "local_aff": {
+     "median_km": 107,
+     "mean_km": 118,
+     "p90_km": 204,
+     "rms_km": 139,
+     "n": 148
+    }
+   },
+   "rot_deg": 10.4,
+   "a": [
+    69.77454601048898,
+    12.851792732288892
+   ],
+   "t": [
+    1175.4495858461055,
+    -3520.194878236243
+   ],
+   "offsets": {
+    "7": [
+     102,
+     -0.0
+    ],
+    "8": [
+     102,
+     -0.0
+    ]
+   },
+   "km_per_px_38": 1.569,
+   "basins": {
+    "Western Mediterranean": {
+     "n": 77,
+     "global_median_km": 86,
+     "own_median_km": 36,
+     "rot_deg": 9.7,
+     "rel_scale": 1.025
+    },
+    "Eastern Mediterranean": {
+     "n": 51,
+     "global_median_km": 81,
+     "own_median_km": 43,
+     "rot_deg": 10.0,
+     "rel_scale": 1.055
+    },
+    "Black Sea": {
+     "n": 3,
+     "global_median_km": 117
+    },
+    "Atlantic coasts": {
+     "n": 17,
+     "global_median_km": 312,
+     "own_median_km": 99,
+     "rot_deg": -2.1,
+     "rel_scale": 0.824
+    }
+   },
+   "local": {
+    "median_km": 38,
+    "p90_km": 90
+   },
+   "local_by_basin": {
+    "Western Mediterranean": 30,
+    "Eastern Mediterranean": 40,
+    "Atlantic coasts": 111
+   },
+   "bearing": {
+    "pairs": 10738,
+    "median_signed_deg": -10.1,
+    "median_abs_deg": 10.2,
+    "median_abs_corrected_deg": 2.1,
+    "within5_corrected_pct": 78.0,
+    "neg_pct": 93.9
+   }
+  }
+ },
+ "transfer": {
+  "nodes": 24,
+  "ties": 12,
+  "loo_median_px": 23.8,
+  "loo_max_px": 37.0,
+  "read_on_both": 19,
+  "from_scan": 55,
+  "from_facsimile": 93
+ },
+ "coast_check_median_km": 0.7,
+ "lat0": 38.0
+}

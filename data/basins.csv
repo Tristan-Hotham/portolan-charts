@@ -1,0 +1,9 @@
+chart,basin,n,global_fit_median_km,own_fit_median_km,own_rotation_deg,own_relative_scale,local_median_km
+Carta Pisana,Western Mediterranean,77,86,36.0,9.7,1.025,30.0
+Carta Pisana,Eastern Mediterranean,51,81,43.0,10.0,1.055,40.0
+Carta Pisana,Black Sea,3,117,,,,
+Carta Pisana,Atlantic coasts,17,312,99.0,-2.1,0.824,111.0
+Catalan Atlas,Western Mediterranean,38,121,57.0,5.4,1.03,43.0
+Catalan Atlas,Eastern Mediterranean,29,83,56.0,12.6,1.043,61.0
+Catalan Atlas,Black Sea,6,111,,,,42.0
+Catalan Atlas,Atlantic coasts,27,244,73.0,4.1,0.764,62.0
