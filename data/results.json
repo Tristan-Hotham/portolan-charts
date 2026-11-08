@@ -1,23 +1,23 @@
 {
  "counts": {
-  "all": 248,
+  "all": 349,
   "catalan": {
-   "n": 100,
-   "conf1": 3,
-   "conf2": 26,
-   "conf3": 71,
-   "conf12_pct": 29.0,
+   "n": 201,
+   "conf1": 20,
+   "conf2": 105,
+   "conf3": 76,
+   "conf12_pct": 62.2,
    "basins": {
-    "W Med": 38,
-    "E Med": 29,
-    "Black Sea": 6,
-    "Atlantic": 27
+    "W Med": 72,
+    "E Med": 71,
+    "Black Sea": 23,
+    "Atlantic": 35
    },
    "sheets": {
-    "5": 14,
-    "6": 44,
-    "7": 16,
-    "8": 26
+    "5": 16,
+    "6": 50,
+    "7": 81,
+    "8": 54
    }
   },
   "pisana": {
@@ -46,7 +46,7 @@
   "local_scan_km": 34,
   "local_facsimile_km": 40
  },
- "coast_check_median_km": 0.7,
+ "coast_check_median_km": 0.6,
  "fit": {
   "pisana": {
    "rot_deg": 10.4,
@@ -55,6 +55,7 @@
    "aff_median_km": 92,
    "local_median_km": 38,
    "local_p90_km": 90,
+   "nn8_median_km": 260,
    "proj": {
     "mercator_sim": {
      "median_km": 93,
@@ -148,241 +149,255 @@
    "atl_vs_med": 3.7
   },
   "catalan": {
-   "rot_deg": 11.2,
-   "median_km": 119,
-   "p90_km": 302,
-   "aff_median_km": 96,
-   "local_median_km": 55,
-   "local_p90_km": 128,
+   "rot_deg": 11.9,
+   "median_km": 88,
+   "p90_km": 203,
+   "aff_median_km": 90,
+   "local_median_km": 27,
+   "local_p90_km": 98,
+   "nn8_median_km": 285,
    "proj": {
     "mercator_sim": {
-     "median_km": 119,
-     "mean_km": 143,
-     "p90_km": 302,
-     "rms_km": 171,
-     "n": 100,
-     "rot_deg": 11.2
+     "median_km": 88,
+     "mean_km": 106,
+     "p90_km": 203,
+     "rms_km": 138,
+     "n": 201,
+     "rot_deg": 11.9
     },
     "mercator_aff": {
-     "median_km": 96,
-     "mean_km": 118,
-     "p90_km": 241,
-     "rms_km": 139,
-     "n": 100
+     "median_km": 90,
+     "mean_km": 102,
+     "p90_km": 184,
+     "rms_km": 126,
+     "n": 201
     },
     "equirect_sim": {
-     "median_km": 99,
-     "mean_km": 122,
-     "p90_km": 266,
-     "rms_km": 147,
-     "n": 100,
-     "rot_deg": 10.7
+     "median_km": 71,
+     "mean_km": 90,
+     "p90_km": 180,
+     "rms_km": 116,
+     "n": 201,
+     "rot_deg": 11.4
     },
     "equirect_aff": {
-     "median_km": 91,
-     "mean_km": 105,
-     "p90_km": 201,
-     "rms_km": 125,
-     "n": 100
+     "median_km": 73,
+     "mean_km": 87,
+     "p90_km": 166,
+     "rms_km": 108,
+     "n": 201
     },
     "local_sim": {
-     "median_km": 134,
-     "mean_km": 162,
-     "p90_km": 302,
-     "rms_km": 184,
-     "n": 100,
-     "rot_deg": 9.8
+     "median_km": 113,
+     "mean_km": 142,
+     "p90_km": 266,
+     "rms_km": 169,
+     "n": 201,
+     "rot_deg": 11.9
     },
     "local_aff": {
-     "median_km": 137,
-     "mean_km": 151,
-     "p90_km": 279,
-     "rms_km": 172,
-     "n": 100
+     "median_km": 125,
+     "mean_km": 144,
+     "p90_km": 251,
+     "rms_km": 166,
+     "n": 201
     }
    },
    "bearing": {
-    "pairs": 4914,
-    "median_signed_deg": -10.2,
-    "median_abs_deg": 10.2,
-    "median_abs_corrected_deg": 3.6,
-    "within5_corrected_pct": 62.4,
-    "neg_pct": 96.1
+    "pairs": 19898,
+    "median_signed_deg": -10.9,
+    "median_abs_deg": 10.9,
+    "median_abs_corrected_deg": 3.0,
+    "within5_corrected_pct": 68.5,
+    "neg_pct": 97.3
    },
-   "km_per_px": 0.504,
+   "km_per_px": 0.532,
    "best_sim_proj": "Equirectangular (38° N)",
-   "best_sim_median_km": 99,
+   "best_sim_median_km": 71,
    "basins": {
     "W Med": {
-     "n": 38,
-     "global_median_km": 121,
-     "own_median_km": 57,
-     "rot_deg": 5.4,
-     "rel_scale": 1.03
+     "n": 72,
+     "global_median_km": 71,
+     "own_median_km": 29,
+     "rot_deg": 7.4,
+     "rel_scale": 0.994
     },
     "E Med": {
-     "n": 29,
-     "global_median_km": 83,
-     "own_median_km": 56,
-     "rot_deg": 12.6,
-     "rel_scale": 1.043
+     "n": 71,
+     "global_median_km": 68,
+     "own_median_km": 45,
+     "rot_deg": 11.1,
+     "rel_scale": 1.019
     },
     "Black Sea": {
-     "n": 6,
-     "global_median_km": 111
+     "n": 23,
+     "global_median_km": 128,
+     "own_median_km": 24,
+     "rot_deg": 12.9,
+     "rel_scale": 1.039
     },
     "Atlantic": {
-     "n": 27,
-     "global_median_km": 244,
-     "own_median_km": 73,
-     "rot_deg": 4.1,
-     "rel_scale": 0.764
+     "n": 35,
+     "global_median_km": 215,
+     "own_median_km": 87,
+     "rot_deg": 5.5,
+     "rel_scale": 0.78
     }
    },
    "local_basins": {
-    "W Med": 43,
-    "E Med": 61,
-    "Black Sea": 42,
-    "Atlantic": 62
+    "W Med": 22,
+    "E Med": 26,
+    "Black Sea": 29,
+    "Atlantic": 63
    },
-   "rose_gap_px": 102,
+   "rose_gap_px": 603.5,
    "free": {
-    "median_km": 108,
-    "rot_deg": 8.7,
+    "median_km": 94,
+    "rot_deg": 9.4,
     "offsets": {
      "5": [
-      -128.7,
-      -0.6
+      -88.1,
+      -84.2
      ],
      "7": [
-      905.5,
-      -173.2
+      909.3,
+      -213.7
      ],
      "8": [
-      1335.3,
-      -373.9
+      1361.0,
+      -427.4
      ]
     }
    },
-   "atl_vs_med": 2.4
+   "atl_vs_med": 3.1
   }
  },
- "rot_mean": 10.8,
+ "med_range": {
+  "global": [
+   68,
+   86
+  ],
+  "own": [
+   29,
+   45
+  ]
+ },
+ "rot_mean": 11.2,
  "atlantic": {
   "pisana": {
    "rel_scale": 0.824,
    "shrink_pct": 18
   },
   "catalan": {
-   "rel_scale": 0.764,
-   "shrink_pct": 24
+   "rel_scale": 0.78,
+   "shrink_pct": 22
   }
  },
  "places": {
   "catalan": {
    "gibraltar": {
-    "res_km": 209,
-    "local_km": 62
+    "res_km": 202,
+    "local_km": 60
    },
    "alexandria": {
-    "res_km": 89,
-    "local_km": 82
+    "res_km": 144,
+    "local_km": 94
    },
    "acre": {
     "res_km": 88,
-    "local_km": 12
+    "local_km": 106
    },
    "beirut": {
-    "res_km": 68,
-    "local_km": 51
+    "res_km": 93,
+    "local_km": 25
    },
    "cap_corse": {
-    "res_km": 109,
-    "local_km": 101
+    "res_km": 28,
+    "local_km": 31
    },
    "capo_passero": {
-    "res_km": 11,
-    "local_km": 92
+    "res_km": 91,
+    "local_km": 16
    },
    "land_s_end": {
-    "res_km": 182,
-    "local_km": 158
+    "res_km": 158,
+    "local_km": 150
    },
    "a_coruna": {
-    "res_km": 63,
+    "res_km": 33,
     "local_km": 62
    },
    "bosporus_constantinople": {
-    "res_km": 225,
-    "local_km": 214
+    "res_km": 226,
+    "local_km": 166
    },
    "valencia": {
-    "res_km": 94,
+    "res_km": 105,
     "local_km": 57
    },
    "mallorca_centre": {
-    "res_km": 115,
+    "res_km": 92,
     "local_km": 25
    },
    "madeira": {
-    "res_km": 305,
-    "local_km": 49
+    "res_km": 304,
+    "local_km": 32
    },
    "south_foreland_dover": {
-    "res_km": 358,
-    "local_km": 153
+    "res_km": 292,
+    "local_km": 157
    },
    "cape_akamas_cyprus_w": {
-    "res_km": 66,
-    "local_km": 38
+    "res_km": 48,
+    "local_km": 26
    },
    "dunnet_head": {
-    "res_km": 537,
-    "local_km": 173
+    "res_km": 587,
+    "local_km": 324
    },
    "mizen_head": {
-    "res_km": 316,
-    "local_km": 81
+    "res_km": 266,
+    "local_km": 124
    },
    "worst": [
     {
      "name": "Dunnet Head",
-     "res_km": 537,
+     "res_km": 587,
      "basin": "Atlantic"
     },
     {
-     "name": "Malin Head",
-     "res_km": 383,
+     "name": "Rostock (Warnemunde)",
+     "res_km": 581,
      "basin": "Atlantic"
     },
     {
-     "name": "South Foreland, Dover",
-     "res_km": 358,
-     "basin": "Atlantic"
-    },
-    {
-     "name": "Rhine mouth (Maas)",
-     "res_km": 338,
+     "name": "Greifswald",
+     "res_km": 557,
      "basin": "Atlantic"
     },
     {
      "name": "Selvagens",
-     "res_km": 337,
+     "res_km": 318,
+     "basin": "Atlantic"
+    },
+    {
+     "name": "Malin Head",
+     "res_km": 317,
      "basin": "Atlantic"
     }
    ],
    "best_local": [
     {
-     "name": "Tarragona",
-     "local_km": 5
+     "name": "Ashkelon",
+     "local_km": 1
     },
     {
-     "name": "Capo Carbonara",
-     "local_km": 6
+     "name": "Civitavecchia",
+     "local_km": 2
     },
     {
-     "name": "Acre",
-     "local_km": 12
+     "name": "Unye (Onia)",
+     "local_km": 2
     }
    ]
   },

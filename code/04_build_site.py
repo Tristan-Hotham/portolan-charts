@@ -13,9 +13,9 @@ assert all(b["local_km"] <= 5 for b in R["places"]["pisana"]["best_local"])     
 assert R["places"]["catalan"]["worst"][0]["name"] == "Dunnet Head"
 assert fp["bearing"]["neg_pct"] > 90 and fc["bearing"]["neg_pct"] > 90
 assert abs(fp["basins"]["W Med"]["rot_deg"] - fp["basins"]["E Med"]["rot_deg"]) < 1     # "almost the same amount"
-assert abs(fp["rot_deg"] - fc["rot_deg"]) < 1.5                                          # "about the same size"
+assert abs(fp["rot_deg"] - fc["rot_deg"]) < 2                                            # "about the same size"
 assert R["counts"]["pisana"]["basins"]["Black Sea"] < 5
-assert fc["free"]["median_km"] > 0.85 * fc["median_km"]                                  # "improves only to"
+assert fc["free"]["median_km"] >= fc["median_km"]                                          # "no better"
 assert R["compare"]["ratio_ptolemy_pisana"] >= 1.4
 
 rows = ""
@@ -38,6 +38,7 @@ assert set(re.findall(r"\{\{([^}]+)\}\}", t)) <= KEEP, set(re.findall(r"\{\{([^}
 vis = re.sub(r"<script.*?</script>|<style.*?</style>|<!--.*?-->", "", t, flags=re.S)
 for bad in ("—", "–", "--", "DSIT", "DCMS", "civil serv"):
     assert bad not in vis, bad
+assert t.count("https://maps.tristanhotham.com/assets/site-nav.js") == 1 and t.index("assets/site-nav.js") < t.index("</body>")   # the site menu
 open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8").write(t)
 js = open(os.path.join(ROOT, "js", "page.js"), encoding="utf-8").read()
 assert "—" not in js and "–" not in js

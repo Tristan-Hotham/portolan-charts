@@ -7,8 +7,9 @@ confidence 1 or 2. Leave-one-out tests on those tie points measure the transfer 
 the reading on the scan wins.
 
 Catalan Atlas. Positions are on the half-size sheet scans. The four sheets are physically separate panels, and the
-folds between them hide part of the drawing. Sheets 7 and 8 are shifted by the gap measured at the wind rose cut by the
-6/7 fold; the other folds are left abutted. As a sensitivity test, a second fit gives sheets 5, 7 and 8 a free offset
+folds between them hide part of the drawing. The scan of panel 7 repeats the eastern strip of panel 6 (Corsica, Sardinia,
+Tabarka to Tunis), so sheets 7 and 8 are shifted west by the offset measured on six coast points read on both; the other
+folds are left abutted. As a sensitivity test, a second fit gives sheets 5, 7 and 8 a free offset
 against sheet 6 (two numbers each), with scale and rotation shared.
 
 Fits (chart pixels, y turned upward, against true positions in a projection):
@@ -72,11 +73,19 @@ SH = IM["catalan"]["sheets"]
 cat["x_sheet"], cat["y_sheet"] = cat.x, cat.y
 cat["x"] = [r.x + SH[str(int(r.sheet))]["mosaic_x"] for r in cat.itertuples()]
 cat["chart"], cat["source"] = "catalan", "scan"
-ROSE6, ROSE7 = (3033, 3925), (184, 3930)
-m6 = ROSE6[0] + SH["6"]["mosaic_x"]; m7 = ROSE7[0] + SH["7"]["mosaic_x"]
-GAP = round(m7 - m6, 1)
-FIXED = {7: (GAP, 0.0), 8: (GAP, 0.0)}
-print("rose gap between sheets 6 and 7 on the abutted mosaic", GAP, "px")
+# The Commons scans of panels 6 and 7 overlap: the eastern strip of panel 6 (Corsica, Sardinia and the Tunisian coast from
+# Tabarka to Tunis) is drawn again along the western edge of panel 7. The same coast points read on both give the shift
+# (sheet 6 x, y ; sheet 7 x, y, half-size sheet pixels). Panels 7 and 8 meet without overlap (Crete runs on across the
+# fold), and so do panels 5 and 6.
+JOIN67 = [("bisert, first letter", 2833, 4717, 475, 4717), ("tabarcha, first letter", 2680, 4765, 330, 4782),
+          ("tunis, first letter", 2915, 4802, 547, 4795), ("Sardinia, north tip", 2677, 3875, 332, 3872),
+          ("Sardinia, south tip", 2677, 4419, 332, 4412), ("Corsica, north tip", 2640, 3456, 297, 3475)]
+DX67 = float(np.median([a - c for _, a, b, c, d in JOIN67]))
+DY67 = float(np.median([b - d for _, a, b, c, d in JOIN67]))
+GAP = round(SH["7"]["mosaic_x"] - SH["6"]["mosaic_x"] - DX67, 1)       # mosaic px that panels 7 and 8 sit too far east when abutted
+FIXED = {7: (GAP, DY67), 8: (GAP, DY67)}                                # (x, y up) to subtract
+print("panel 7 repeats panel 6: shift", DX67, DY67, "-> panels 7 and 8 moved west by", GAP, "mosaic px; spread",
+      [round(a - c - DX67) for _, a, b, c, d in JOIN67])
 P = pd.concat([pis, cat], ignore_index=True)
 P["basin"] = [basin(a, b) for a, b in zip(P.lat, P.lon)]
 P["id"] = [f"{c[0]}{i:03d}" for c, i in zip(P.chart, P.groupby("chart").cumcount() + 1)]
@@ -87,7 +96,7 @@ land = unary_union([shape(f["geometry"]).buffer(0) for f in jload(f"{GEO}/ne_10m
 coast = land.boundary
 tr_m = Transformer.from_crs(4326, 3035, always_xy=True)
 P["coast_km"] = [round(coast.distance(Point(lo, la)) * 111.2 * np.cos(np.radians(la)), 1) for la, lo in zip(P.lat, P.lon)]
-SMALL_ISLANDS = {"Alboran Island", "Columbretes Islands", "La Galite", "Gorgona", "Ponza", "Palagruza", "Tremiti"}   # too small for Natural Earth 1:10m
+SMALL_ISLANDS = {"Alboran Island", "Columbretes Islands", "La Galite", "Gorgona", "Ponza", "Palagruza", "Tremiti", "Linosa", "Lampedusa"}   # too small for Natural Earth 1:10m
 far = P[(P.coast_km > 15) & ~P.identification.isin(SMALL_ISLANDS) & ~P.identification.str.contains("centre|Strait|estuary|delta|Kerch|Bosporus|mouth", case=False)]
 assert far.empty, far[["identification", "coast_km"]].values.tolist()
 OUT["coast_check_median_km"] = round(float(P.coast_km.median()), 1)
@@ -115,9 +124,7 @@ def unproject(kind, x, y, centre=None):
         lo, la = t.transform(np.asarray(x) * 111.2, np.asarray(y) * 111.2); return np.asarray(la), np.asarray(lo)
 
 
-# Fixed sheet offsets for the Catalan Atlas (mosaic pixels to subtract): the wind rose split by the fold between sheets 6
-# and 7 has its centre at (3033, 3925) on sheet 6 and (184, 3930) on sheet 7, so the abutted mosaic puts sheets 7 and 8
-# GAP px too far east. The folds 5/6 and 7/8 have no such mark and are left abutted. FREE = True instead fits an
+# Fixed sheet offsets for the Catalan Atlas (mosaic pixels to subtract): see JOIN67 above. FREE = True instead fits an
 # offset for every sheet (a sensitivity test; it lets the offsets soak up real distortion).
 
 
@@ -149,10 +156,13 @@ def fit(g, kind, model, centre):
     g["_zx"], g["_zy"] = g.x.values, -g.y.values
     if not FREE:
         g["_zx"] = g._zx.values - np.array([FIXED.get(int(s), (0, 0))[0] if s == s else 0 for s in g.sheet])
+        g["_zy"] = g._zy.values - np.array([FIXED.get(int(s), (0, 0))[1] if s == s else 0 for s in g.sheet])
     A, b, sheets, k0 = design(g, model)
     c = np.linalg.lstsq(A, b, rcond=None)[0]
     off = {s: (c[k0 + 2 * j], c[k0 + 2 * j + 1]) for j, s in enumerate(sheets)} if FREE else dict(FIXED)
     ox = np.array([off.get(int(s), (0, 0))[0] if s == s else 0 for s in g.sheet]); oy = np.array([off.get(int(s), (0, 0))[1] if s == s else 0 for s in g.sheet])
+    if not FREE:
+        ox, oy = 0 * ox, 0 * oy                                         # the fixed offsets are already applied above
     zx, zy = g._zx.values - ox, g._zy.values - oy                      # chart position in the sheet-corrected frame
     if model == "sim":
         a = complex(c[0], c[1]); t = complex(c[2], c[3])
@@ -209,19 +219,23 @@ for ch, g in P.groupby("chart"):
     # local error: affine fit to the 8 nearest neighbours (true distance), Mercator
     wx, wy = project("mercator", g.lat.values, g.lon.values)
     tree = cKDTree(np.c_[wx, wy])
+    ZX = g.x.values - np.array([par["offsets"].get(int(s), (0, 0))[0] if s == s else 0 for s in g.sheet])      # sheet-corrected chart frame
+    ZY = -g.y.values - np.array([par["offsets"].get(int(s), (0, 0))[1] if s == s else 0 for s in g.sheet])
     loc = []
     for i in range(len(g)):
         _, nb = tree.query([wx[i], wy[i]], k=9)
         nb = [j for j in nb if j != i][:8]
         A = np.c_[wx[nb], wy[nb], np.ones(8)]
-        cx = np.linalg.lstsq(A, g.x.values[nb], rcond=None)[0]; cy = np.linalg.lstsq(A, -g.y.values[nb], rcond=None)[0]
+        cx = np.linalg.lstsq(A, ZX[nb], rcond=None)[0]; cy = np.linalg.lstsq(A, ZY[nb], rcond=None)[0]
         # invert at point i: chart -> Mercator
         M = np.array([[cx[0], cx[1]], [cy[0], cy[1]]])
-        w = np.linalg.solve(M, [g.x.values[i] - cx[2], -g.y.values[i] - cy[2]])
+        w = np.linalg.solve(M, [ZX[i] - cx[2], ZY[i] - cy[2]])
         la_, lo_ = unproject("mercator", w[0], w[1])
         loc.append(float(gc_km(g.lat.values[i], g.lon.values[i], la_, lo_)))
     P.loc[g.index, "local_km"] = np.round(loc, 1)
-    F["local"] = {"median_km": round(float(np.median(loc))), "p90_km": round(float(np.quantile(loc, .9)))}
+    nn8 = [float(gc_km(g.lat.values[i], g.lon.values[i], g.lat.values[j], g.lon.values[j]))
+           for i, j in enumerate(tree.query(np.c_[wx, wy], k=9)[1][:, 8])]                  # spread of the neighbourhoods
+    F["local"] = {"median_km": round(float(np.median(loc))), "p90_km": round(float(np.quantile(loc, .9))), "nn8_median_km": round(float(np.median(nn8)))}
     F["local_by_basin"] = {bn: round(float(np.median(np.array(loc)[g.basin.values == bn]))) for bn in BNAMES if (g.basin == bn).sum() >= 5}
     # bearings between pairs >= 100 km, chart (sheet-corrected) against the rhumb line
     zx = g.x.values - np.array([par["offsets"].get(int(s), (0, 0))[0] if s == s else 0 for s in g.sheet])

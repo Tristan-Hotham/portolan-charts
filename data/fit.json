@@ -1,142 +1,146 @@
 {
  "fits": {
   "catalan": {
-   "n": 100,
+   "n": 201,
    "centre": [
-    39.45,
-    10.29
+    40.05,
+    14.76
    ],
    "proj": {
     "mercator_sim": {
-     "median_km": 119,
-     "mean_km": 143,
-     "p90_km": 302,
-     "rms_km": 171,
-     "n": 100,
-     "rot_deg": 11.2
+     "median_km": 88,
+     "mean_km": 106,
+     "p90_km": 203,
+     "rms_km": 138,
+     "n": 201,
+     "rot_deg": 11.9
     },
     "mercator_aff": {
-     "median_km": 96,
-     "mean_km": 118,
-     "p90_km": 241,
-     "rms_km": 139,
-     "n": 100
+     "median_km": 90,
+     "mean_km": 102,
+     "p90_km": 184,
+     "rms_km": 126,
+     "n": 201
     },
     "equirect_sim": {
-     "median_km": 99,
-     "mean_km": 122,
-     "p90_km": 266,
-     "rms_km": 147,
-     "n": 100,
-     "rot_deg": 10.7
+     "median_km": 71,
+     "mean_km": 90,
+     "p90_km": 180,
+     "rms_km": 116,
+     "n": 201,
+     "rot_deg": 11.4
     },
     "equirect_aff": {
-     "median_km": 91,
-     "mean_km": 105,
-     "p90_km": 201,
-     "rms_km": 125,
-     "n": 100
+     "median_km": 73,
+     "mean_km": 87,
+     "p90_km": 166,
+     "rms_km": 108,
+     "n": 201
     },
     "local_sim": {
-     "median_km": 134,
-     "mean_km": 162,
-     "p90_km": 302,
-     "rms_km": 184,
-     "n": 100,
-     "rot_deg": 9.8
+     "median_km": 113,
+     "mean_km": 142,
+     "p90_km": 266,
+     "rms_km": 169,
+     "n": 201,
+     "rot_deg": 11.9
     },
     "local_aff": {
-     "median_km": 137,
-     "mean_km": 151,
-     "p90_km": 279,
-     "rms_km": 172,
-     "n": 100
+     "median_km": 125,
+     "mean_km": 144,
+     "p90_km": 251,
+     "rms_km": 166,
+     "n": 201
     }
    },
-   "rot_deg": 11.2,
+   "rot_deg": 11.9,
    "a": [
-    216.5108066918139,
-    42.919248177531244
+    204.58631970265333,
+    43.20298076143533
    ],
    "t": [
-    5644.87178975243,
-    -11900.046944431297
+    5576.213073289193,
+    -11511.892017409358
    ],
    "offsets": {
     "7": [
-     102,
-     -0.0
+     603.5,
+     -1.5
     ],
     "8": [
-     102,
-     -0.0
+     603.5,
+     -1.5
     ]
    },
-   "km_per_px_38": 0.504,
+   "km_per_px_38": 0.532,
    "basins": {
     "Western Mediterranean": {
-     "n": 38,
-     "global_median_km": 121,
-     "own_median_km": 57,
-     "rot_deg": 5.4,
-     "rel_scale": 1.03
+     "n": 72,
+     "global_median_km": 71,
+     "own_median_km": 29,
+     "rot_deg": 7.4,
+     "rel_scale": 0.994
     },
     "Eastern Mediterranean": {
-     "n": 29,
-     "global_median_km": 83,
-     "own_median_km": 56,
-     "rot_deg": 12.6,
-     "rel_scale": 1.043
+     "n": 71,
+     "global_median_km": 68,
+     "own_median_km": 45,
+     "rot_deg": 11.1,
+     "rel_scale": 1.019
     },
     "Black Sea": {
-     "n": 6,
-     "global_median_km": 111
+     "n": 23,
+     "global_median_km": 128,
+     "own_median_km": 24,
+     "rot_deg": 12.9,
+     "rel_scale": 1.039
     },
     "Atlantic coasts": {
-     "n": 27,
-     "global_median_km": 244,
-     "own_median_km": 73,
-     "rot_deg": 4.1,
-     "rel_scale": 0.764
+     "n": 35,
+     "global_median_km": 215,
+     "own_median_km": 87,
+     "rot_deg": 5.5,
+     "rel_scale": 0.78
     }
    },
    "local": {
-    "median_km": 55,
-    "p90_km": 128
+    "median_km": 27,
+    "p90_km": 98,
+    "nn8_median_km": 285
    },
    "local_by_basin": {
-    "Western Mediterranean": 43,
-    "Eastern Mediterranean": 61,
-    "Black Sea": 42,
-    "Atlantic coasts": 62
+    "Western Mediterranean": 22,
+    "Eastern Mediterranean": 26,
+    "Black Sea": 29,
+    "Atlantic coasts": 63
    },
    "bearing": {
-    "pairs": 4914,
-    "median_signed_deg": -10.2,
-    "median_abs_deg": 10.2,
-    "median_abs_corrected_deg": 3.6,
-    "within5_corrected_pct": 62.4,
-    "neg_pct": 96.1
+    "pairs": 19898,
+    "median_signed_deg": -10.9,
+    "median_abs_deg": 10.9,
+    "median_abs_corrected_deg": 3.0,
+    "within5_corrected_pct": 68.5,
+    "neg_pct": 97.3
    },
    "free_offsets": {
-    "median_km": 108,
-    "rot_deg": 8.7,
+    "median_km": 94,
+    "rot_deg": 9.4,
     "offsets": {
      "5": [
-      -128.7,
-      -0.6
+      -88.1,
+      -84.2
      ],
      "7": [
-      905.5,
-      -173.2
+      909.3,
+      -213.7
      ],
      "8": [
-      1335.3,
-      -373.9
+      1361.0,
+      -427.4
      ]
     }
    },
-   "rose_gap_px": 102
+   "rose_gap_px": 603.5
   },
   "pisana": {
    "n": 148,
@@ -202,12 +206,12 @@
    ],
    "offsets": {
     "7": [
-     102,
-     -0.0
+     603.5,
+     -1.5
     ],
     "8": [
-     102,
-     -0.0
+     603.5,
+     -1.5
     ]
    },
    "km_per_px_38": 1.569,
@@ -240,7 +244,8 @@
    },
    "local": {
     "median_km": 38,
-    "p90_km": 90
+    "p90_km": 90,
+    "nn8_median_km": 260
    },
    "local_by_basin": {
     "Western Mediterranean": 30,
@@ -266,6 +271,6 @@
   "from_scan": 55,
   "from_facsimile": 93
  },
- "coast_check_median_km": 0.7,
+ "coast_check_median_km": 0.6,
  "lat0": 38.0
 }

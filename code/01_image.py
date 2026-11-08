@@ -2,9 +2,9 @@
 
   * Carta Pisana: the Commons scan as it is (north up).
   * Catalan Atlas: the four chart sheets (5 to 8, west to east) are laid side by side, each cropped to its own parchment
-    (found from the warm colour of the vellum against the grey scanner background) and abutted, tops level. The folds
-    between the sheets hide or squeeze a strip of the drawing; 02_fit.py shifts sheets 7 and 8 by the gap measured at the
-    wind rose on the 6/7 fold (see there).
+    (found from the warm colour of the vellum against the grey scanner background) and abutted, tops level. The scan of
+    sheet 7 repeats the eastern strip of sheet 6 (Corsica, Sardinia, Tabarka to Tunis); 02_fit.py shifts sheets 7 and 8
+    west by the offset measured on coast points read on both (see there). The mosaic image keeps the sheets abutted.
   * Outputs: img/tiles_<chart>/{z}/{x}/{y}.webp (the image laid on Web Mercator pixel space, full resolution at the top
     zoom), img/<chart>_1600.jpg and _3200.jpg (whole chart, for the fallback view and the figures), data/images.json.
 """

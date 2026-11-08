@@ -19,7 +19,7 @@ assert fc["proj"]["equirect_sim"]["median_km"] <= fc["proj"]["mercator_sim"]["me
 assert R["places"]["pisana"]["best_local"][2]["local_km"] == max(b["local_km"] for b in R["places"]["pisana"]["best_local"])
 assert R["places"]["pisana"]["best_local"][0]["local_km"] <= 3                                # "Messina within a few kilometres"
 assert max(fp["basins"]["W Med"]["own_median_km"], fp["basins"]["E Med"]["own_median_km"]) < 50   # "less than a day's sail"
-assert R["compare"]["hereford_median_km"] > R["compare"]["idrisi_affine_median_km"] > R["compare"]["ptolemy_helmert_median_km"] > fc["median_km"] > fp["median_km"]
+assert R["compare"]["hereford_median_km"] > R["compare"]["idrisi_affine_median_km"] > R["compare"]["ptolemy_helmert_median_km"] > max(fc["median_km"], fp["median_km"])
 assert fp["bearing"]["median_abs_deg"] > 9 and fc["bearing"]["median_abs_deg"] > 9
 
 post = open(os.path.join(ROOT, "code", "blog_template.html"), encoding="utf-8").read()
@@ -70,7 +70,7 @@ ab = ab.replace("\\%", "%").replace("\\&", "&").replace("\\textit{", "").replace
 assert "\\" not in ab, ab
 zmeta = {"title": "How Accurate Were Portolan Charts? The Carta Pisana and the Catalan Atlas Measured Against the Real Coast",
          "upload_type": "publication", "publication_type": "workingpaper",
-         "description": f"<p>{ab}</p><p>Interactive page: <a href=\"{PAGE}\">{PAGE}</a>. Data and code: <a href=\"{REPO}\">{REPO}</a>. Blog post: {{https://blog.tristanhotham.com/2026/10/31/portolan-charts/}}.</p><p>Sources: Carta Pisana (Bibliothèque nationale de France, Cartes et plans GE B-1118) and Catalan Atlas (BnF, Espagnol 30), public domain scans on Wikimedia Commons; E. F. Jomard's facsimile of the Carta Pisana (public domain); Natural Earth (public domain). All control points read by the author; readings and derived data CC BY 4.0.</p>",
+         "description": f"<p>{ab}</p><p>Interactive page: <a href=\"{PAGE}\">{PAGE}</a>. Data and code: <a href=\"{REPO}\">{REPO}</a>. Blog post: <a href=\"https://blog.tristanhotham.com/2026/10/31/portolan-charts/\">https://blog.tristanhotham.com/2026/10/31/portolan-charts/</a>.</p><p>Sources: Carta Pisana (Bibliothèque nationale de France, Cartes et plans GE B-1118) and Catalan Atlas (BnF, Espagnol 30), public domain scans on Wikimedia Commons; E. F. Jomard's facsimile of the Carta Pisana (public domain); Natural Earth (public domain). All control points read by the author; readings and derived data CC BY 4.0.</p>",
          "creators": [{"name": "Hotham, Tristan", "affiliation": "Independent researcher", "orcid": "0000-0003-4931-9349"}],
          "keywords": ["portolan charts", "Carta Pisana", "Catalan Atlas", "cartometry", "map accuracy", "magnetic declination", "history of cartography", "medieval maps", "thin-plate spline"],
          "license": "cc-by-4.0", "language": "eng",

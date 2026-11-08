@@ -69,14 +69,16 @@ BSHORT = {"Western Mediterranean": "W Med", "Eastern Mediterranean": "E Med", "B
 
 
 def basin(lat, lon):
-    """Sea basin of a coastal point. Atlantic: outside Gibraltar or on the Biscay, Channel and North Sea coasts and the
-    Atlantic islands. Black Sea: the Black Sea, the Bosporus and the Sea of Azov. Mediterranean split at the line from
-    Cape Bon to Sicily and up the Strait of Messina (16 degrees east), with the whole Adriatic in the east."""
-    if lon < -5.5 or (lat > 43.2 and lon < -1.0) or (lat > 46.5 and lon < 10):
+    """Sea basin of a coastal point. Atlantic: outside Gibraltar or on the Biscay, Channel, North Sea and Baltic coasts
+    and the Atlantic islands. Black Sea: the Black Sea, the Bosporus and the Sea of Azov (north of 40.95 N east of 28.5 E, and north of
+    40.5 N east of 36.5 E for the Pontic coast east of Samsun). Mediterranean split at the line from
+    Cape Bon to Sicily and up the Strait of Messina (16 degrees east), with the whole Adriatic in the east (east of
+    13.4 E north of 41.5 N, and east of 12 E north of 43 N)."""
+    if lon < -5.5 or (lat > 43.2 and lon < -1.0) or (lat > 46.5 and lon < 10) or (lat > 50 and lon < 30):
         return "Atlantic coasts"
-    if lat > 40.95 and lon > 28.5:
+    if (lat > 40.95 and lon > 28.5) or (lat > 40.5 and lon > 36.5):
         return "Black Sea"
-    if lon >= 16.0 or (lat > 41.5 and lon > 13.4):
+    if lon >= 16.0 or (lat > 41.5 and lon > 13.4) or (lat > 43.0 and lon > 12.0):
         return "Eastern Mediterranean"
     return "Western Mediterranean"
 

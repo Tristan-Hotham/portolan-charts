@@ -11,8 +11,8 @@ tex = lambda s: str(s).replace("\\", "").replace("&", "\\&").replace("%", "\\%")
 for ch in ("pisana", "catalan"):
     B = R["fit"][ch]["basins"]
     assert R["fit"][ch]["proj"]["local_sim"]["median_km"] > R["fit"][ch]["proj"]["equirect_sim"]["median_km"]   # "a local azimuthal frame fits worse"
-    assert R["fit"][ch]["aff_median_km"] <= R["fit"][ch]["median_km"]
-assert {w["name"] for w in R["places"]["catalan"]["worst"][:2]} == {"Dunnet Head", "Malin Head"}                # "worst places in Scotland and Ireland"
+    assert abs(R["fit"][ch]["aff_median_km"] - R["fit"][ch]["median_km"]) <= 10                 # "hardly different"
+assert {"Dunnet Head", "Malin Head", "Rostock (Warnemunde)"} <= {w["name"] for w in R["places"]["catalan"]["worst"]}   # "Scotland, the Baltic and Ireland"
 assert R["transfer"]["local_facsimile_km"] > R["transfer"]["local_scan_km"]
 
 

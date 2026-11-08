@@ -32,6 +32,7 @@ for ch in ("pisana", "catalan"):
     f = F[ch]
     d = {"rot_deg": f["rot_deg"], "median_km": f["proj"]["mercator_sim"]["median_km"], "p90_km": f["proj"]["mercator_sim"]["p90_km"],
          "aff_median_km": f["proj"]["mercator_aff"]["median_km"], "local_median_km": f["local"]["median_km"], "local_p90_km": f["local"]["p90_km"],
+         "nn8_median_km": f["local"]["nn8_median_km"],
          "proj": f["proj"], "bearing": f["bearing"], "km_per_px": f["km_per_px_38"]}
     best = min(f["proj"], key=lambda k: f["proj"][k]["median_km"] if k.endswith("_sim") else 1e9)
     d["best_sim_proj"] = PRJ[best.split("_")[0]]
@@ -48,6 +49,9 @@ R["fit"]["catalan"]["free"] = F["catalan"]["free_offsets"]
 for ch in ("pisana", "catalan"):
     B = R["fit"][ch]["basins"]
     R["fit"][ch]["atl_vs_med"] = round(B["Atlantic"]["global_median_km"] / np.median([B["W Med"]["global_median_km"], B["E Med"]["global_median_km"]]), 1)
+MED = [R["fit"][ch]["basins"][b] for ch in ("pisana", "catalan") for b in ("W Med", "E Med")]
+R["med_range"] = {"global": [min(x["global_median_km"] for x in MED), max(x["global_median_km"] for x in MED)],
+                  "own": [min(x["own_median_km"] for x in MED), max(x["own_median_km"] for x in MED)]}
 R["rot_mean"] = round((R["fit"]["pisana"]["rot_deg"] + R["fit"]["catalan"]["rot_deg"]) / 2, 1)
 
 # Atlantic: Britain and the Atlantic on each chart, own-fit scale relative to the whole chart
@@ -92,12 +96,14 @@ for ch in ("pisana", "catalan"):
     assert B["Atlantic"]["global_median_km"] > max(B["W Med"]["global_median_km"], B["E Med"]["global_median_km"])   # the Atlantic is worst
     assert B["Atlantic"]["rel_scale"] < 0.9                                           # the Atlantic coasts are drawn smaller
     assert R["fit"][ch]["local_median_km"] < R["fit"][ch]["median_km"]
-assert fp["local_median_km"] < fc["local_median_km"]                              # the Pisana is the tighter of the two locally
+assert fc["local_median_km"] < fp["local_median_km"]                              # the Catalan Atlas is the tighter of the two locally
 assert fp["proj"]["equirect_sim"]["median_km"] <= fp["proj"]["mercator_sim"]["median_km"]
 assert fc["proj"]["equirect_sim"]["median_km"] <= fc["proj"]["mercator_sim"]["median_km"]   # "no better on Mercator"
 assert fp["proj"]["local_sim"]["median_km"] > fp["proj"]["equirect_sim"]["median_km"]
 assert R["compare"]["ptolemy_helmert_median_km"] > fp["median_km"] and R["compare"]["hereford_median_km"] > 4 * fp["median_km"]
 assert fp["basins"]["W Med"]["own_median_km"] < R["compare"]["ptolemy_italy_km"] and fp["basins"]["E Med"]["own_median_km"] < R["compare"]["ptolemy_greece_km"]
+assert PL["catalan"]["worst"][0]["name"] == "Dunnet Head"                           # "its worst place is Dunnet Head"
+assert fc["free"]["median_km"] >= fc["median_km"] - 5                                # "free offsets do not help"
 jsave(R, f"{DATA}/results.json", indent=1)
 
 # ---- tables
